@@ -169,7 +169,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Duhi5_0: -2719461699928517899
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

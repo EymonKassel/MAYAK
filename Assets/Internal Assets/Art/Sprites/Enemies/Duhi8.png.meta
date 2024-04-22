@@ -433,7 +433,19 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Duhi8_0: -6041440072666275666
+      Duhi8_1: 6995105690231450462
+      Duhi8_10: 5713959588720228059
+      Duhi8_11: 7285661497589318953
+      Duhi8_2: 4287397347488018353
+      Duhi8_3: 8989558323205905204
+      Duhi8_4: -143014736279398475
+      Duhi8_5: 8779210148306688333
+      Duhi8_6: -8466492521049449492
+      Duhi8_7: 87786833166208907
+      Duhi8_8: 6980754630338761945
+      Duhi8_9: -1671485762472914683
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
