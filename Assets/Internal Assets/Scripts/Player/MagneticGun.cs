@@ -12,6 +12,7 @@ public class MagneticGun : MonoBehaviour {
 
     [Header("Main Camera")]
     public Camera Camera;
+    public Vector3 MousePosition;
 
     [Header("Transform Refrences")]
     public Transform GunHolder;
@@ -94,6 +95,8 @@ public class MagneticGun : MonoBehaviour {
     }
 
     private void RotateGun(Vector3 lookPoint, bool allowRotationOverTime) {
+        
+        
         Vector3 distanceVector = lookPoint - GunPivot.position;
 
         float angle = Mathf.Atan2(distanceVector.y, distanceVector.x) * Mathf.Rad2Deg;
@@ -104,6 +107,18 @@ public class MagneticGun : MonoBehaviour {
         } else
             GunPivot.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
+
+    //private void RotateGun(Vector3 lookPoint, bool allowRotationOverTime) {
+    //    Vector3 distanceVector = lookPoint - GunPivot.position;
+
+    //    float angle = Mathf.Atan2(distanceVector.y, distanceVector.x) * Mathf.Rad2Deg;
+    //    if ( _rotateOverTime && allowRotationOverTime ) {
+    //        Quaternion startRotation = GunPivot.rotation;
+    //        GunPivot.rotation = Quaternion.Lerp(startRotation,
+    //            Quaternion.AngleAxis(angle, Vector3.forward), Time.deltaTime * _rotationSpeed);
+    //    } else
+    //        GunPivot.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+    //}
 
     private void SetGrapplePoint() {
         if ( Physics2D.Raycast(FirePoint.position, _mouseFirePointDistanceVector.normalized) ) {
