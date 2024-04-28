@@ -102,8 +102,7 @@ public class MagneticGun : MonoBehaviour {
         float angle = Mathf.Atan2(distanceVector.y, distanceVector.x) * Mathf.Rad2Deg;
         if ( _rotateOverTime && allowRotationOverTime ) {
             Quaternion startRotation = GunPivot.rotation;
-            GunPivot.rotation = Quaternion.Lerp(startRotation,
-                Quaternion.AngleAxis(angle, Vector3.forward), Time.deltaTime * _rotationSpeed);
+            GunPivot.rotation = Quaternion.Lerp(startRotation, Quaternion.AngleAxis(angle, Vector3.forward), Time.deltaTime * _rotationSpeed);
         } else
             GunPivot.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }

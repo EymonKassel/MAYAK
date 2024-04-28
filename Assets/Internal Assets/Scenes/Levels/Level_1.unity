@@ -848,7 +848,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 614095640}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 93df480cd87a427408c8acd23c81d466, type: 3}
   m_Name: 
@@ -1792,11 +1792,11 @@ GameObject:
   - component: {fileID: 1923095091}
   m_Layer: 10
   m_Name: Gun
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1923095089
 Transform:
   m_ObjectHideFlags: 0
@@ -1885,6 +1885,7 @@ MonoBehaviour:
   _grappableLayerNumber: 9
   _enemyLayerNumber: 10
   Camera: {fileID: 519420031}
+  MousePosition: {x: 0.89, y: 0, z: 0}
   GunHolder: {fileID: 614095641}
   GunPivot: {fileID: 1370251611}
   FirePoint: {fileID: 1422882484}
