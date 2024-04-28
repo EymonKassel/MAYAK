@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class MagneticGun : MonoBehaviour {
+public class MyGrapplingGun : MonoBehaviour {
     #region REFERENCES & ATTRIBUTES
     [Header("Scripts")]
-    public Magnet Magnet;
+    public MyGrappleRope GrappleRope;
 
     [Header("Layer Settings")]
     [SerializeField] private bool _grappleToAll = false;
@@ -12,7 +12,6 @@ public class MagneticGun : MonoBehaviour {
 
     [Header("Main Camera")]
     public Camera Camera;
-    public Vector3 MousePosition;
 
     [Header("Transform Refrences")]
     public Transform GunHolder;
@@ -59,7 +58,7 @@ public class MagneticGun : MonoBehaviour {
     #endregion
 
     private void Start() {
-        Magnet.enabled = false;
+        GrappleRope.enabled = false;
         SpringJoint2D.enabled = false;
         PlayerRB2D.gravityScale = 1;
         PlayerMovement = FindAnyObjectByType<PlayerMovement2>();
@@ -72,20 +71,20 @@ public class MagneticGun : MonoBehaviour {
             SetGrapplePoint();
             //PlayerMovement.enabled = false;
         } else if ( Input.GetKey(ActivationKey) ) {
-            if ( Magnet.enabled ) {
+            if ( GrappleRope.enabled ) {
                 RotateGun(GrapplePoint, false);
             } else {
                 RotateGun(Camera.ScreenToWorldPoint(Input.mousePosition), false);
             }
 
-            if ( _launchToPoint && Magnet.IsGrappling ) {
+            if ( _launchToPoint && GrappleRope.IsGrappling ) {
                 if ( _LaunchType == LaunchType.TransformLaunch ) {
                     GunHolder.position = Vector3.Lerp(GunHolder.position, GrapplePoint, Time.deltaTime * _launchSpeed);
                 }
             }
 
         } else if ( Input.GetKeyUp(ActivationKey) ) {
-            Magnet.enabled = false;
+            GrappleRope.enabled = false;
             SpringJoint2D.enabled = false;
             PlayerRB2D.gravityScale = 1;
             PlayerMovement.enabled = true;
@@ -95,29 +94,16 @@ public class MagneticGun : MonoBehaviour {
     }
 
     private void RotateGun(Vector3 lookPoint, bool allowRotationOverTime) {
-      
-        
         Vector3 distanceVector = lookPoint - GunPivot.position;
 
         float angle = Mathf.Atan2(distanceVector.y, distanceVector.x) * Mathf.Rad2Deg;
         if ( _rotateOverTime && allowRotationOverTime ) {
             Quaternion startRotation = GunPivot.rotation;
-            GunPivot.rotation = Quaternion.Lerp(startRotation, Quaternion.AngleAxis(angle, Vector3.forward), Time.deltaTime * _rotationSpeed);
+            GunPivot.rotation = Quaternion.Lerp(startRotation,
+                Quaternion.AngleAxis(angle, Vector3.forward), Time.deltaTime * _rotationSpeed);
         } else
             GunPivot.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
-
-    //private void RotateGun(Vector3 lookPoint, bool allowRotationOverTime) {
-    //    Vector3 distanceVector = lookPoint - GunPivot.position;
-
-    //    float angle = Mathf.Atan2(distanceVector.y, distanceVector.x) * Mathf.Rad2Deg;
-    //    if ( _rotateOverTime && allowRotationOverTime ) {
-    //        Quaternion startRotation = GunPivot.rotation;
-    //        GunPivot.rotation = Quaternion.Lerp(startRotation,
-    //            Quaternion.AngleAxis(angle, Vector3.forward), Time.deltaTime * _rotationSpeed);
-    //    } else
-    //        GunPivot.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-    //}
 
     private void SetGrapplePoint() {
         if ( Physics2D.Raycast(FirePoint.position, _mouseFirePointDistanceVector.normalized) ) {
@@ -127,21 +113,21 @@ public class MagneticGun : MonoBehaviour {
                 && ( ( Vector2.Distance(hit.point, FirePoint.position) <= _maxDistance ) || !_hasMaxDistance ) ) {
                 GrapplePoint = hit.point;
                 DistanceVector = GrapplePoint - (Vector2)GunPivot.position;
-                Magnet.enabled = true;
+                GrappleRope.enabled = true;
             }
 
             //ENEMY FINDER LOGIC
             if ( ( hit.transform.gameObject.layer == _enemyLayerNumber ) && ( ( Vector2.Distance(hit.point, FirePoint.position) <= _maxDistance ) || !_hasMaxDistance ) ) {
                 GrapplePoint = hit.point;
                 DistanceVector = GrapplePoint - (Vector2)GunPivot.position;
-                Magnet.enabled = true;
+                GrappleRope.enabled = true;
 
                 //HIT ENEMY
                 //_touchedEnemy = true;
                 //hit.transform.gameObject.GetComponent<EnemyHealth>().Imhit = true;
             }
         }
-    }
+    }   
 
     public void Grapple() {
         if ( !_launchToPoint  /*&& !_autoCongifureDistance*/ ) {
