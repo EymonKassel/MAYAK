@@ -51,3 +51,9 @@ TagManager:
   - name: Black
     uniqueID: 2784969979
     locked: 0
+  - name: Trace
+    uniqueID: 2922858081
+    locked: 0
+  - name: RealBlack
+    uniqueID: 2174140405
+    locked: 0

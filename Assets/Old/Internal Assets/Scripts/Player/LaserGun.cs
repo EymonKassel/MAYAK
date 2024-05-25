@@ -14,6 +14,8 @@ public class LaserGun : MonoBehaviour {
     [SerializeField] private float _counterLimit = 50;
     [SerializeField] private float _chargingSpeed = 0.25f;
 
+    public bool IsShooting = false;
+
     public int AmountOfDamage = 1;
 
     private void Update() {
@@ -24,18 +26,20 @@ public class LaserGun : MonoBehaviour {
         if ( Input.GetKeyUp(_activationKey) ) {
             StopAllCoroutines();
             Trace.SetActive(false);
-
+            IsShooting = false;
         }
     }
-    
+
     private IEnumerator LaserCharging() {
         for ( int i = 0; i < _counterLimit; i++ ) {
             yield return new WaitForSeconds(_chargingSpeed);
             Debug.Log($"charge {i + 1}");
         }
         Trace.SetActive(true);
+        IsShooting = true;
         yield return new WaitForSeconds(0.25f);
         Trace.SetActive(false);
+        IsShooting = false;
         yield break;
     }
 

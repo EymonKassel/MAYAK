@@ -10,12 +10,15 @@ using System.Collections;
 using UnityEngine;
 
 public class PlayerMovement2 : MonoBehaviour {
+    [SerializeField] private MyGrappleRope _myGrappleRope;
+    [SerializeField] private LaserGun _laserGun;
     //Scriptable object which holds all the player's movement parameters. If you don't want to use it
     //just paste in all the parameters, though you will need to manuly change all references in this script
     public PlayerData Data;
 
     #region COMPONENTS
     public Rigidbody2D RB { get; private set; }
+    private Animator _anim;
     //Script to handle all player animations, all references can be safely removed if you're importing into your own project.
     /// <summary>
     //public PlayerAnimator AnimHandler { get; private set; }
@@ -61,6 +64,8 @@ public class PlayerMovement2 : MonoBehaviour {
     public float LastPressedDashTime { get; private set; }
     #endregion
 
+    private bool _isMovedOnce = false;
+
     #region CHECK PARAMETERS
     //Set all of these up in the inspector
     [Header("Checks")]
@@ -84,6 +89,7 @@ public class PlayerMovement2 : MonoBehaviour {
 
     private void Awake() {
         RB = GetComponent<Rigidbody2D>();
+        _anim = GetComponent<Animator>();
         //AnimHandler = GetComponent<PlayerAnimator>();
     }
 
@@ -93,6 +99,10 @@ public class PlayerMovement2 : MonoBehaviour {
     }
 
     private void Update() {
+        if (  _moveInput.x > 0 ||  _moveInput.y > 0 ){
+            _isMovedOnce=true;  
+        }
+
         #region TIMERS
         LastOnGroundTime -= Time.deltaTime;
         LastOnWallTime -= Time.deltaTime;
@@ -252,6 +262,16 @@ public class PlayerMovement2 : MonoBehaviour {
             //No gravity when dashing (returns to normal once initial dashAttack phase over)
             SetGravityScale(0);
         }
+        #endregion
+
+        #region HANDMADE ANIMATIONS
+        if ( _isMovedOnce ) {
+            if ( !_myGrappleRope.IsGrappling ) {
+                if ( _moveInput.x > 0 || _moveInput.x < 0 ) {
+                    _anim.Play("Walk");
+                } else _anim.Play("Idle2");
+            } else _anim.Play("Hook");
+        } else _anim.Play("Wall");
         #endregion
     }
 
