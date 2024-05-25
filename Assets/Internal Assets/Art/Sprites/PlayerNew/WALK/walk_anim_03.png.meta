@@ -169,7 +169,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      walk_anim_03_0: -626279999501428968
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

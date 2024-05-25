@@ -169,7 +169,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      jump_anim_01_0: 1029023051152884339
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

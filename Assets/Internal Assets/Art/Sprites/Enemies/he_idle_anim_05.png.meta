@@ -169,7 +169,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      he_idle_anim_05_0: 768512897467554205
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

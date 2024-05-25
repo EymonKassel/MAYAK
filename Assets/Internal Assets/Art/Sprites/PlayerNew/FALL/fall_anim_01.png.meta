@@ -169,7 +169,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      fall_anim_01_0: 6829083660034673973
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

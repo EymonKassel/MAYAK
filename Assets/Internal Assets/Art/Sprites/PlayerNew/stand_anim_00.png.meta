@@ -169,7 +169,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      stand_anim_00_0: 4738923192057835993
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

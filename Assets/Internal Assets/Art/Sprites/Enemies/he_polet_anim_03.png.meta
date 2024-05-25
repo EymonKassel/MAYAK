@@ -169,7 +169,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      he_polet_anim_03_0: -8184789744275083157
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

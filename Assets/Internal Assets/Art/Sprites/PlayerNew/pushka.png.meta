@@ -169,7 +169,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      pushka_0: -3032591687558121238
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

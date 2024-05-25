@@ -169,7 +169,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ptiza_anim_01_0: 5782559822623752219
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
