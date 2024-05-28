@@ -99,7 +99,7 @@ public class PlayerMovement2 : MonoBehaviour {
     }
 
     private void Update() {
-        if (  _moveInput.x > 0 ||  _moveInput.y > 0 ){
+        if ( ( _moveInput.x > 0 ||  _moveInput.y > 0) || ( _moveInput.x < 0 || _moveInput.y < 0 ) ) {
             _isMovedOnce=true;  
         }
 
